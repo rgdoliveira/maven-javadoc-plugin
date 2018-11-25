@@ -16,4 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-assert new File( basedir, 'target/apidocs/com/foo/MyClass.html').exists()
+ 
+int javaVersion = System.getProperty( "java.specification.version" ) as Integer
+if ( javaVersion >= 11 ) {
+  assert new File( basedir, 'target/apidocs/M.N/com/foo/MyClass.html').exists()
+} else {
+  assert new File( basedir, 'target/apidocs/com/foo/MyClass.html').exists()
+} 
+
+
