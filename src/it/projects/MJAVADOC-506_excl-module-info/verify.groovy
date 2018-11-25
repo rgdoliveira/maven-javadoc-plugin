@@ -17,11 +17,11 @@
  * under the License.
  */
  
-int javaVersion = System.getProperty( "java.specification.version" ) as Integer
-if ( javaVersion >= 11 ) {
-  assert new File( basedir, 'target/apidocs/M.N/com/foo/MyClass.html').exists()
-} else {
+def javaVersion = System.getProperty( "java.specification.version" )
+if ( javaVersion =~ /(1\..+)|9|10/ ) {
   assert new File( basedir, 'target/apidocs/com/foo/MyClass.html').exists()
+} else {
+  assert new File( basedir, 'target/apidocs/M.N/com/foo/MyClass.html').exists()
 } 
 
 
